@@ -45,9 +45,6 @@ board.on("ready", function(){
 	servo_y.to(90); 
 
 	var led = new five.Led(13);
-	var x_rot;
-	var y_rot;
-	var xbox_key;
 
 	console.log("before wss.on");
 	wss.on('connection', function(ws) {
@@ -57,9 +54,9 @@ board.on("ready", function(){
 			//console.log('received: %s', message);
 			//console.log(message);
 			var coords = message.split(' ');		
-			x_rot = Math.floor(coords[0]);
-			y_rot = Math.floor(coords[1]);
-			xbox_key = Math.floor(coords[2]);
+			var x_rot = Math.floor(coords[0]);
+			var y_rot = Math.floor(coords[1]);
+			var xbox_key = Math.floor(coords[2]);
 			servo_x.to(x_rot);
 			servo_y.to(y_rot);
 
