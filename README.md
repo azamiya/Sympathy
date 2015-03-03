@@ -27,4 +27,4 @@ add **export PATH=$HOME/.nodebrew/current/bin:$PATH** to the end of .bashrc
 
 ### firmata
 
-    npm install -g firmata
+    npm install firmata
