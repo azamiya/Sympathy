@@ -9,8 +9,8 @@ var server = dgram.createSocket('udp4');
 
 	//firmata = require('/usr/local/lib/node_modules/firmata'),					//For RasPi
 	firmata = require('../node_modules/johnny-five/node_modules/firmata'),		//For Mac
-    //board = new five.Board({port : "/dev/ttyACM0"});							//For RasPi
-    board = new five.Board({port : "/dev/tty.usbmodem1411"});					//For Mac
+    board = new five.Board({port : "/dev/ttyACM0"});							//For RasPi
+    //board = new five.Board({port : "/dev/tty.usbmodem1411"});					//For Mac
 
 
     var ledPin = 13;
