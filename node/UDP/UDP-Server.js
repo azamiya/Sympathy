@@ -1,5 +1,5 @@
 var PORT = 3333;
-var HOST = '127.0.0.1';
+var HOST = '10.0.1.26';
 
 var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
