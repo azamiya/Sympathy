@@ -2,13 +2,13 @@
 var five = require("johnny-five");
 
 var PORT = 3333;
-var HOST = '127.0.0.1';
+var HOST = '0.0.0.1';
 
 var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
 
 	//firmata = require('/usr/local/lib/node_modules/firmata'),					//For RasPi
-	firmata = require('../node_modules/johnny-five/node_modules/firmata'),		//For Mac
+	firmata = require('../../node_modules/johnny-five/node_modules/firmata'),		//For Mac
     board = new five.Board({port : "/dev/ttyACM0"});							//For RasPi
     //board = new five.Board({port : "/dev/tty.usbmodem1411"});					//For Mac
 
@@ -53,6 +53,10 @@ board.on("ready", function(){
     	console.log(remote.address + ':' + remote.port +' - ' + message[0] + message[1]);
     	servo_x.to(message[0]);
 		servo_y.to(message[1]);
+		if(message[0] == 255 && message[1] == 255){
+			servo_x.to(90);
+			servo_y.to(90); 
+		}
 	});
 
 	server.bind(PORT, HOST);

@@ -2,19 +2,18 @@
 var five = require("johnny-five");
 
 var PORT = 3333;
-var HOST = '0.0.0.0';
+var HOST = '0.0.0.1';
 
 var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
 
 	//firmata = require('/usr/local/lib/node_modules/firmata'),					//For RasPi
-	firmata = require('../../node_modules/johnny-five/node_modules/firmata'),		//For Mac
+	firmata = require('../node_modules/johnny-five/node_modules/firmata'),		//For Mac
     board = new five.Board({port : "/dev/ttyACM0"});							//For RasPi
     //board = new five.Board({port : "/dev/tty.usbmodem1411"});					//For Mac
 
 
     var ledPin = 13;
-    var ServoPin_y = 9;
 
     function arduinoReady(err) {
     	if (err) {
@@ -50,7 +49,7 @@ board.on("ready", function(){
 	});
 
 	server.on('message', function (message, remote) {
-    	//console.log(remote.address + ':' + remote.port +' - ' + message[0] + message[1]);
+    	console.log(remote.address + ':' + remote.port +' - ' + message[0] + message[1]);
     	servo_x.to(message[0]);
 		servo_y.to(message[1]);
 	});
