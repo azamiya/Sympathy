@@ -2,7 +2,7 @@
 var five = require("johnny-five");
 
 var PORT = 3333;
-var HOST = '0.0.0.1';
+var HOST = '0.0.0.0';
 
 var dgram = require('dgram');
 var server = dgram.createSocket('udp4');
